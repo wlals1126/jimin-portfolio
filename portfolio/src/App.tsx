@@ -1,7 +1,23 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+import { RecoilRoot, useRecoilValue } from "recoil";
+import { MyDataTitleSelector } from "../src/store/ProfileAtom";
 
 function App() {
-  return <div>helloworld</div>;
+  const title = useRecoilValue(MyDataTitleSelector);
+  return (
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+  );
 }
 
-export default App;
+function Root() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+}
+
+export default Root;
